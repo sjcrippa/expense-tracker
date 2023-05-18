@@ -1,11 +1,25 @@
 //esto es un componente que va a englobar a otros y de esta forma cualquier dato dentro del provider va a poder ser accedido.
-import { createContext } from "react";
+import { createContext, useContext, useReducer } from "react";
+import AppReducer from "./AppReducer";
 
-export const Create = createContext();
+const initialState = {
+    transactions: []
+};
 
-export const GlobalProvider = ({children}) => {
+export const Context = createContext();
+
+export const useGlobalState = () => {
+    const context = useContext(Context);
+    return context;
+};
+export const GlobalProvider = ( {children} ) => {
+    const [state, setState] = useReducer( AppReducer , initialState);
+    
     return (
-        <Context.Provider value={{total: 100}}>
+        <Context.Provider value={{
+            // here we export the functions that operate in the Reducer:
+            transactions: state.transactions
+        }}>
             {children}
         </Context.Provider>
     )

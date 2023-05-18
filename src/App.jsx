@@ -1,10 +1,18 @@
 import React from 'react'
 
+import { GlobalProvider } from './context/GlobalState'
+import Header from './components/Header'
+import Balance from './components/Balance'
+import TransactionForm from './components/TransactionForm'
+
 const App = () => {
 	return (
-		<h1 className="text-3xl font-bold text-center">
-			Hello world!
-		</h1>
+		<GlobalProvider>
+			<Header />
+			<Balance />
+			<TransactionForm />
+			<h1>Hola Mundo!</h1>
+		</GlobalProvider>
 	)
 }
 
