@@ -13,7 +13,10 @@ export const useGlobalState = () => {
     return context;
 };
 export const GlobalProvider = ( {children} ) => {
-    const [state, setState] = useReducer( AppReducer , initialState);
+    // dispatch = setState. Same idea.
+    const [state, dispatch] = useReducer( AppReducer , initialState);
+
+
     
     return (
         <Context.Provider value={{
