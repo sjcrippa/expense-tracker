@@ -1,6 +1,5 @@
 //esto es un componente que va a englobar a otros y de esta forma cualquier dato dentro del provider va a poder ser accedido.
-import { createContext, useContext, useReducer } from "react";
-
+import { createContext, useContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
@@ -15,7 +14,15 @@ export const useGlobalState = () => {
 };
 export const GlobalProvider = ( {children} ) => {
     // dispatch = setState. Same idea.
-    const [state, dispatch] = useReducer( AppReducer , initialState);
+    const [state, dispatch] = useReducer( AppReducer , initialState,
+        () => {
+            const localData = localStorage.getItem('transactions')
+            return localData ? JSON.parse(localData) : initialState
+    });
+
+    useEffect(() => {
+        localStorage.setItem('transactions', JSON.stringify(state))
+    },[state]);
 
     const addTransaction = (transaction) => {
         dispatch({
