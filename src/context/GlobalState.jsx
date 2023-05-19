@@ -1,5 +1,6 @@
 //esto es un componente que va a englobar a otros y de esta forma cualquier dato dentro del provider va a poder ser accedido.
 import { createContext, useContext, useReducer } from "react";
+
 import AppReducer from "./AppReducer";
 
 const initialState = {
@@ -23,6 +24,13 @@ export const GlobalProvider = ( {children} ) => {
             //el payload es el dato que le vamos a pasar a ese valor.
             payload: transaction
         })
+    };
+
+    const deleteTransaction = (id) => {
+        dispatch({
+            type: "DELETE_TRANSACTION",
+            payload: id
+        })
     }
     
     return (
@@ -30,6 +38,7 @@ export const GlobalProvider = ( {children} ) => {
             // here we export the functions that operate in the Reducer:
             transactions: state.transactions,
             addTransaction,
+            deleteTransaction
         }}>
             {children}
         </Context.Provider>

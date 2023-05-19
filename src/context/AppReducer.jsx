@@ -10,7 +10,12 @@ export default (state, action) => {
             return {
                 ...state,
                 transactions:[...state.transactions, action.payload],
-            }; // transactions antes era un array vacio, con el operador spreed lo copiamos y le aniadimos un nuevo elemento
+            }; // transactions antes era un array vacio, con el operador spreed lo copiamos y le aniadimos un nuevo elemento.
+        case 'DELETE_TRANSACTION':
+            return {
+                ...state,
+                transactions: state.transactions.filter(transaction => transaction.id !== action.payload) // el action.payload es el id que nos pasan, si es distinto, se va a mantener en el array. Si la transaccion es igual no se aniade en el nuevo array, se estaria quitando el id que estoy buscando del array de transactions.
+            }
         default:
             return state
     }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import {useGlobalState} from '../context/GlobalState';
+import {useGlobalState} from '../../context/GlobalState';
 
 const TransactionForm = () => {
     // this is the info that the user puts to explain the expenses.
@@ -11,7 +11,8 @@ const TransactionForm = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         addTransaction({
-            id: 1,
+            // we need to give an unique id number for each movement, so we will use a library named crypto through the browser
+            id: window.crypto.randomUUID(),
             description,
             amount
         })
