@@ -14,7 +14,7 @@ const TransactionForm = () => {
             // we need to give an unique id number for each movement, so we will use a library named crypto through the browser
             id: window.crypto.randomUUID(),
             description,
-            amount
+            amount: +amount, //gracias al +, cualquier string que reciba se convertira en un number
         })
     }
 

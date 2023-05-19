@@ -10,7 +10,7 @@ const TransactionList = () => {
             {
                 transactions.map(transaction => (
                     <div 
-                    className='flex gap-3 justify-center'
+                    className='flex gap-3'
                     key={transaction.id}>
                         <p>{transaction.description}</p>
                         <span>{transaction.amount}</span>
@@ -18,7 +18,7 @@ const TransactionList = () => {
                         onClick={() => {
                             deleteTransaction(transaction.id);
                         }}
-                        className='bg-red-500 p-1'>
+                        className=''>
                             X
                         </button>
                     </div>
