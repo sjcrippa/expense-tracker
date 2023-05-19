@@ -1,14 +1,26 @@
 import React, { useState } from 'react'
 
+import {useGlobalState} from '../context/GlobalState';
+
 const TransactionForm = () => {
     // this is the info that the user puts to explain the expenses.
+    const { addTransaction} = useGlobalState();
     const [description, setDescription] = useState();
     const [amount, setAmount] = useState(0);
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        addTransaction({
+            id: 1,
+            description,
+            amount
+        })
+    }
 
     return (
         <>
             <div>
-                <form>
+                <form onSubmit={onSubmit}>
                     <input
                         className='border-2 border-black rounded-md m-2'
                         onChange={(e) => setDescription(e.target.value)}

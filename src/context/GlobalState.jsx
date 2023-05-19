@@ -16,12 +16,20 @@ export const GlobalProvider = ( {children} ) => {
     // dispatch = setState. Same idea.
     const [state, dispatch] = useReducer( AppReducer , initialState);
 
-
+    const addTransaction = (transaction) => {
+        dispatch({
+            //al ejecutar dispatch, espera un type que seria el nombre de la operacion que queremos ejecutar.
+            type:'ADD_TRANSACTION',
+            //el payload es el dato que le vamos a pasar a ese valor.
+            payload: transaction
+        })
+    }
     
     return (
         <Context.Provider value={{
             // here we export the functions that operate in the Reducer:
-            transactions: state.transactions
+            transactions: state.transactions,
+            addTransaction,
         }}>
             {children}
         </Context.Provider>
