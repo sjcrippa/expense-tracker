@@ -7,7 +7,7 @@ const Balance = () => {
     //el transactions es un array de objetos, cada obj tiene un id, un description y un amount. Para calcular el balance solo necesitamos el amount del objeto, entonces lo vamos a recorrer con un map y extraer el monto.
     const amounts = transactions.map(transaction => transaction.amount);
 
-    const total = amounts.reduce((acumulador, item) => (acumulador += item), 0);
+    const total = amounts.reduce((acumulador, item) => (acumulador += item), 0).toFixed(2);
     
     return (
         

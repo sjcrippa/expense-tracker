@@ -5,6 +5,7 @@ import Balance from './components/Balance';
 import TransactionForm from './components/transactions/TransactionForm';
 import TransactionList from './components/transactions/TransactionList';
 import IncomeExpenses from './components/IncomeExpenses';
+import ExpenseGraphic from './components/ExpenseGraphic';
 
 const App = () => {
 	return (
@@ -21,7 +22,8 @@ const App = () => {
 							<TransactionForm />
 						</div>
 						{/* child of the flex, one column */}
-						<div className='w-full'>
+						<div className='flex flex-col flex-1'>
+							<ExpenseGraphic />
 							<TransactionList />
 						</div>
 					</div>
