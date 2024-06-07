@@ -22,7 +22,7 @@ const TransactionForm = () => {
 
     return (
         <>
-            <div>
+            <section>
                 <form onSubmit={onSubmit}>
                     <input
                         className='bg-zinc-600 text-white px-3 py-2 rounded-lg block mb-2 w-full '
@@ -43,7 +43,7 @@ const TransactionForm = () => {
                             Add transaction
                         </button>
                 </form>
-            </div>
+            </section>
         </>
     )
 }

@@ -10,25 +10,23 @@ import ExpenseGraphic from './components/ExpenseGraphic';
 const App = () => {
 	return (
 		<GlobalProvider>
-			<div className='bg-zinc-950 text-white h-screen flex justify-center items-center'>
+			<main className='text-white h-full mb-10 flex flex-col justify-center items-center'>
+				<h1 className='mt-2 mb-5 text-4xl font-bold'>Expense Tracker</h1>
 				{/* father flex */}
-				<div className='container mx-auto w-3/6'>
-					<div className='bg-zinc-800 p-10 rounded-lg flex gap-x-2'>
-						{/* child of the flex, one column */}
-						<div>
-							<h1 className='text-4xl font-bold'>Expense Tracker</h1>
-							<IncomeExpenses />
-							<Balance />
-							<TransactionForm />
-						</div>
-						{/* child of the flex, one column */}
-						<div className='flex flex-col flex-1'>
-							<ExpenseGraphic />
-							<TransactionList />
-						</div>
+				<div className='bg-zinc-800 p-5 rounded-lg flex flex-col md:flex md:flex-row gap-x-5 md:w-3/6'>
+					{/* child of the flex, one column */}
+					<div>
+						<TransactionForm />
+						<IncomeExpenses />
+						<Balance />
+					</div>
+					{/* child of the flex, one column */}
+					<div className='flex flex-col flex-1'>
+						<ExpenseGraphic />
+						<TransactionList />
 					</div>
 				</div>
-			</div>
+			</main>
 		</GlobalProvider>
 	)
 }
