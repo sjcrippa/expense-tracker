@@ -33,13 +33,13 @@ const ExpenseGraphic = () => {
 
     return (
         <section className='w-full h-full text-center relative'>
-            <div className='w-full h-16 -mb-12 md:-mb-10 xl:-mb-20 flex justify-center items-center'>
+            <div className='w-full h-16 -mb-12 md:-mb-10 xl:-mb-20 red500flex justify-center items-center'>
                 <span className='font-semibold uppercase'>Expense Graphic</span>
             </div>
             {
                 data.length > 0 ? (
                     <VictoryPie
-                        colorScale={['rgb(16, 185, 129)', '#rgb(239, 68, 68)']}
+                        colorScale={['rgb(16, 185, 129)', 'rgb(239, 68, 68)']}
                         data={data}
                         animate={{
                             duration: 400,

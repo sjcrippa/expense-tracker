@@ -1,4 +1,3 @@
-//esto es un componente que va a englobar a otros y de esta forma cualquier dato dentro del provider va a poder ser accedido.
 import { createContext, useContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
 
@@ -12,42 +11,42 @@ export const useGlobalState = () => {
     const context = useContext(Context);
     return context;
 };
-export const GlobalProvider = ( {children} ) => {
-    // dispatch = setState. Same idea.
-    const [state, dispatch] = useReducer( AppReducer , initialState,
-        () => {
-            const localData = localStorage.getItem('transactions')
-            return localData ? JSON.parse(localData) : initialState
+
+export const GlobalProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(AppReducer, initialState, () => {
+        const localData = localStorage.getItem('transactions');
+        return localData ? JSON.parse(localData) : initialState;
     });
 
     useEffect(() => {
-        localStorage.setItem('transactions', JSON.stringify(state))
-    },[state]);
+        localStorage.setItem('transactions', JSON.stringify(state));
+    }, [state]);
 
     const addTransaction = (transaction) => {
-        dispatch({
-            //al ejecutar dispatch, espera un type que seria el nombre de la operacion que queremos ejecutar.
-            type:'ADD_TRANSACTION',
-            //el payload es el dato que le vamos a pasar a ese valor.
-            payload: transaction
-        })
+        if (transaction.amount !== 0 && !isNaN(transaction.amount)) {
+            dispatch({
+                type: 'ADD_TRANSACTION',
+                payload: transaction
+            });
+        } else {
+            console.error('Transacción inválida: El importe debe ser un número diferente de cero.');
+        }
     };
 
     const deleteTransaction = (id) => {
         dispatch({
             type: "DELETE_TRANSACTION",
             payload: id
-        })
-    }
-    
+        });
+    };
+
     return (
         <Context.Provider value={{
-            // here we export the functions that operate in the Reducer:
             transactions: state.transactions,
             addTransaction,
             deleteTransaction
         }}>
             {children}
         </Context.Provider>
-    )
-}
+    );
+};

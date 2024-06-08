@@ -10,7 +10,7 @@ import ExpenseGraphic from './components/ExpenseGraphic';
 const App = () => {
 	return (
 		<GlobalProvider>
-			<main className='text-white h-full mb-10 flex flex-col justify-center items-center'>
+			<main className='text-white h-full mb-10 flex flex-col justify-center items-center overflow-y-visible'>
 				<h1 className='mt-5 mb-5 text-4xl font-bold'>Expense Tracker</h1>
 				{/* father flex */}
 				<div className='bg-zinc-800 p-5 rounded-lg flex flex-col md:flex md:flex-row gap-x-5 md:w-4/6 xl:w-3/6'>
