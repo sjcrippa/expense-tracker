@@ -15,12 +15,12 @@ const IncomeExpenses = () => {
 
     return (
         <>
-            <section className='md:mb-10'>
-                <div className='flex justify-between my-2'>
+            <section className='md:mb-10 md:mt-10'>
+                <div className='flex justify-between my-2 text-emerald-500 font-bold'>
                     <h4>Income</h4>
                     <h4>{income}</h4>
                 </div>
-                <div className='flex justify-between my-2'>
+                <div className='flex justify-between my-2 text-red-500 font-bold'>
                     <h4>Expense</h4>
                     <h4>{expense}</h4>
                 </div>

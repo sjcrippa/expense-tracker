@@ -6,7 +6,7 @@ const TrashIcon = (props) => (
     height={24}
     viewBox="0 0 24 24"
     style={{
-      fill: "rgba(255, 255, 255, 1)",
+      fill: "rgb(239, 68, 68)",
       transform: "",
       msfilter: "",
     }}
