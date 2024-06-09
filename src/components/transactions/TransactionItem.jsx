@@ -20,7 +20,7 @@ const TransactionItem = ({ transaction }) => {
                     onClick={() => {
                         deleteTransaction(transaction.id);
                     }}
-                    className='ml-4 items-center'>
+                    className='ml-4 items-center hover:scale-105'>
                     <TrashIcon />
                 </button>
             </div>

@@ -14,13 +14,12 @@ const TransactionForm = () => {
         e.preventDefault();
         if (description === '' || amount === '' || isNaN(amount) || amount === 0) {
             Toastify({
-                text: "First, you need to add a description and a value!",
+                text: "Ops, you need to add a description and a value!",
                 duration: 3000,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
                 style: {
-                    font: 'bold',
-                    background: "red",
+                    background: "rgb(239, 68, 68)",
                 },
             }).showToast()
             return;
@@ -59,7 +58,7 @@ const TransactionForm = () => {
                         value={description} />
 
                     <input
-                        className='bg-zinc-600 text-white px-3 py-2 rounded-lg block mb-2 w-full '
+                        className='bg-zinc-600 red text-white px-3 py-2 rounded-lg block mb-2 w-full '
                         onChange={(e) => setAmount(e.target.value)}
                         step='0.01'
                         type="number"
@@ -67,7 +66,7 @@ const TransactionForm = () => {
                         value={amount} />
 
                     <button
-                        className='bg-indigo-700 text-white px-3 py-2 rounded-lg mb-2 block w-full'>
+                        className='bg-indigo-700 text-white px-3 py-2 rounded-lg mb-2 block w-full hover:bg-opacity-85'>
                         Add transaction
                     </button>
                 </form>
